@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--Vue1.0版有内置过滤器，2.0版取消了内置过滤器-->
+		<div id = "demo">
+			<p style="color: red;">1.currency</p>
+			<p>{{num|currency}}</p>
+			
+			<p style="color: red;">2.debounce</p>
+			<button @click="test|debounce 3000">点击</button>
+			
+			<p style="color: red;">3.uppercase</p>
+			<p>{{content|uppercase}}</p>
+			
+			<p style="color: red;">4.lowercase</p>
+			<p>{{content|lowercase}}</p>
+			
+			<p style="color: red;">5.capitalize</p>
+			<p>{{content|capitalize}}</p>
+			
+			<p style="color: red;">6.json</p>
+			<p>{{obj|json}}</p>
+			
+			<p style="color: red;">7.orderBy</p>
+			<select v-model="select1">
+				<option value='id'>id</option>
+				<option value= "name">名字</option>
+			</select>
+			<button @click="sordFn">排序</button>
+			<ul>
+				<li v-for="a in arr|orderBy select1 sort">{{a.id}} {{a.name}}</li>
+			</ul>
+			
+			<ul>
+				<li v-for="b in brr">{{b}}</li>
+			</ul>
+			
+			<p style="color: red;">8.filterBy</p>
+			<input v-model="search"  />
+			<select v-model="select">
+				<option value="id">id</option>
+				<option value="name">名字</option>
+			</select>
+			<ul>
+				<li v-for="a in arr|filterBy search in select">{{a.id}} {{a.name}}</li>
+			</ul>
+			
+			<p style="color: red;">9.limitBy</p>
+			<p>{{text|limitBy 4 3}}</p>
+			<button @click="pre">上一页</button>
+			<button @click="next">下一页</button>
+			<ul>
+				<li v-for="a in arr|limitBy 2 page">{{a.id}} {{a.name}}</li>
+			</ul>
+			
+		</div>
+		
+		<script type="text/javascript" src="../js/vue1.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#demo',
+				data:{
+					page: 0,
+					text: 'abcdefghijk',
+					num: 100,
+					content:"aBcDefGI",
+					obj: {
+						name: 'qd',
+						skill: ['css', 'js', 'html']
+					},
+					arr: [{
+						name: '广州',
+						id: 5
+					},{
+						name:"青岛",
+						id:4
+					},{
+						name:"深圳",
+						id:7
+					},{
+						name:"北京",
+						id:1
+					}],
+					select1:"name",
+					sort:1,
+					brr:"123456789",
+					search: '',
+					select: 'id'
+				},
+				methods: {
+					test: function(){
+						alert(1);
+					},
+					sordFn: function(){
+						this.sort = -this.sort;
+					},
+					pre: function(){
+						this.page = this.page -2;
+					},
+					next: function(){
+						this.page = this.page + 2;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

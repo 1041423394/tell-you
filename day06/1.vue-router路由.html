@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/vue-router.js"></script>
+		<script type="text/javascript">
+			var tab1 = {
+				template:"<div>tab1</div>"
+				};
+			var tab2 = {
+				template:"<div>tab2</div>"
+				};
+			var tab3 = {
+				template:"<div>tab3</div>"
+				};
+			var tab4 = {
+				template:"<div>tab4</div>"
+				};
+				
+			var router = new VueRouter({
+				routes:[{
+					path: '/tab1',
+					component: tab1
+				},{
+					path: '/tab2',
+					component: tab2
+				},{
+					path:'/tab3',
+					component:tab3
+				},{
+					path:'/tab4',
+					component:tab4
+				}]
+			});
+			new Vue({
+				el: "#demo",
+				template:`
+					<div>
+						<a href = "#/tab1">tab1</a>
+						<a href = "#/tab2">tab2</a>
+						<a href = "#/tab3">tab3</a>
+						<a href = "#/tab4">tab4</a>
+						<router-view></router-view>
+					
+					</div>
+				`,
+				router:router
+			})
+		</script>
+	</body>
+</html>

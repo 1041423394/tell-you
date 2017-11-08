@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "demo">
+			<p style="color: red;">1.v-text</p>
+			<p v-text="name"></p>
+			
+			<p style="color: red;">2.v-if</p>
+			<p v-if="!bool">1.显示或者隐藏</p>
+			<p v-else>2.显示或者隐藏</p>
+			
+			<p style="color: red;">3.v-for</p>
+			<ul>
+				<li v-for="a in arr">{{a}}</li>
+			</ul>
+			<select>
+				<option v-for="a in arr">{{a}}</option>
+			</select>
+			<table>
+				<tr v-for="a in arr">
+					<td>{{a}}</td>
+				</tr>
+			</table>
+			
+			<ul>
+				<li v-for="a in arr2">{{a.name}} {{a.skill}}</li>
+			</ul>
+			
+			<p style="color: red;">4.v-show</p>
+			<p v-show="bool">1.显示或者隐藏</p>
+			<p v-if="bool">2.显示或者隐藏</p>
+			<!--v-show 是属性变为block或者none-->
+			<!--v-if 添加或者删除节点-->
+			
+			<p style="color: red;">4.v-on:xxx</p>
+			<!--添加on事件-->
+		</div>
+		
+		
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#demo',
+				data:{
+					name: '青岛',
+					bool: true,
+					arr: ['css', 'html', 'js'],
+					arr2: [{
+						name: '广州',
+						skill: 'ps'
+					},{
+						name: '上海',
+						skill: 'php'
+					},{
+						name: '北京',
+						skill: 'java'
+					}]
+				}
+			})
+		</script>
+	</body>
+</html>

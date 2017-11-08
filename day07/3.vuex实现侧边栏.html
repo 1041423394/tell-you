@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.nav-content {
+				width: 200px;
+				position: fixed;
+				min-height: 100%;
+				background-color: #e1e1e1;
+				/*调试代码时经常使用border，帮我们定位到div的一个区域*/
+				/*border: 1px solid black;*/
+				z-index: 99;
+				/*使用透明度为0来隐藏元素*/
+				opacity: 1;
+			}
+			
+			header {
+				height: 50px;
+				width: 100%;
+				line-height: 50px;
+				text-align: center;
+				background-color: red;
+				color: white;
+				position: fixed;
+				z-index: 98;
+			}
+			
+			.fade-enter-active,
+			.fade-leave-active {
+				transition: all .5s;
+			}
+			
+			.fade-enter,
+			.fade-leave-to
+			/* .fade-leave-active in below version 2.1.8 */
+			
+			{
+				left: -200px;
+				font-size: 0;
+			}
+			
+			.fade-enter-to,
+			.fade-leave
+			/* .fade-leave-active in below version 2.1.8 */
+			
+			{
+				left: 0;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/vuex.js"></script>
+		
+		<script type="text/javascript">
+			
+			var store = new Vuex.Store({
+				state: {
+					bool: false
+				}
+			});
+			Vue.component("xheader",{
+				template:`
+					<header @click="showBar">今日新闻</header>
+				`,
+				methods: {
+					showBar: function(){
+						this.$store.state.bool = !this.$store.state.bool;
+					}
+				}
+			});
+			Vue.component("slideBar", {
+				template:`
+					<transition  name= "fade">
+						<div class="nav-content" v-show="bool"></div>
+					</transition>
+				`,
+				computed: {
+					bool: function(){
+						return this.$store.state.bool;
+					}
+				}
+			});
+			
+			new Vue({
+				el: '#demo',
+				template:`
+					<div>
+						<xheader></xheader>
+						<slide-bar></slide-bar>
+					</div>
+				`,
+				store:store
+			})
+			
+			
+		</script>
+		
+	</body>
+</html>

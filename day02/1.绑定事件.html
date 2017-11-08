@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "demo">
+			<input v-model="username" type="text" :placeholder="tip.u"  />
+			<input v-model="password" type="text" :placeholder="tip.p"  />
+			<button @click="login">登录</button>
+			<button @click="logout">注销</button>
+			<p>{{content}}</p>
+			
+		</div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript">
+			
+			new Vue({
+				el: '#demo',
+				data:{
+					username: '',
+					password: '',
+					tip:{
+						u: '请输入用户名',
+						p: '请输入密码'
+					},
+					content: ''
+				},
+				methods:{
+					login: function(){
+						var self = this;
+						console.log(this.username, this.password);
+						$.ajax({
+							type: 'get',
+							url:"http://localhost/Vue/day02/home.php",
+							data:{
+								username: self.username,
+								password: self.password
+							},
+							success: function(data){
+								console.log(this);
+								self.content = data;
+							}
+						})
+					},
+					logout: function(){
+						this.login();
+						console.log("注销");
+					}
+				}
+			})
+			
+		</script>
+	</body>
+</html>

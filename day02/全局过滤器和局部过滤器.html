@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "demo">
+			<p>{{name|s}}</p>
+			<p>{{name|q}}</p>
+			<p>{{1000|currencys}}</p>
+		</div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			Vue.filter('currencys', function(value){
+				return '$' + value;
+			})
+			new Vue({
+				el: '#demo',
+				data: {
+					name: 'qd'
+				},
+				filters:{
+					s:function(value){
+						return value + 'ed';
+					},
+					q:function(value){
+						return value + 'q';
+					}
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>

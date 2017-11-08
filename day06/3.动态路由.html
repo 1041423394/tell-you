@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="demo"></div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/vue-router.js"></script>
+		<script type="text/javascript">
+			
+			var home = {
+				template:`
+				<div>
+					<a href = "#/detail/1/a">第一新闻业</a>
+					<br />
+					<a href = "#/detail/2/b">第二新闻业</a>
+					<br />
+					<a href = "#/detail/3/c">第三新闻业</a>
+					<br />
+				</div>
+				`
+			};
+			var detail = {
+				template:`
+					<div>
+						第{{numb}}详情
+					</div>
+				`,
+				data: function(){
+					return {
+						numb: ''
+					}
+				},
+				mounted: function(){
+					console.log(this);
+					this.numb = this.$route.params.num
+				}
+			};
+			
+			var router = new VueRouter({
+				routes: [{
+					path: '/home',
+					component: home
+				},{
+					path: '/detail/:num/:apla',
+					component: detail
+				}]
+			});
+			
+			new Vue({
+				el: '#demo',
+				template: `
+				<div>
+					<home></home>
+					<router-view></router-view>
+					</div>
+				`,
+				router:router
+			})
+			
+		</script>
+	</body>
+</html>

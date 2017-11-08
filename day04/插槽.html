@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		
+		<script type="text/javascript">
+			
+			Vue.component("xslot", {
+				props: ['bool1', 'bool2'],
+				template:`
+					<div style="border:1px solid blue; margin:20px">
+						<p>这是组件</p>
+						<slot></slot>
+						<p v-if = "bool1">显示年龄</p>
+						<p v-if = "bool2">显示性别</p>
+					</div>
+				`
+			})
+			new Vue({
+				el: '#demo',
+				template:`
+					<div style="border:1px solid red; margin:20px">
+						<p>{{name}}</p>
+						<xslot :bool1 = "true" :bool2 = "false">
+							<div>hello world</div>
+						</xslot>
+						<xslot :bool1 = "flase" :bool2 = "true">
+							<div>world hello</div>
+						</xslot>
+					</div>
+				`,
+				name: 'qd'
+				
+			})
+		</script>
+	</body>
+</html>

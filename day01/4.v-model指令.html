@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "demo">
+			
+			<p style="color: red;">1.input</p>
+			<input v-model="name"  />
+			<input v-model="num" type="range"  />
+			
+			<p>{{name}}</p>
+			<p :style="{fontSize: num+'px'}">{{name}}</p>
+			
+			<p style="color: red;">2.textarea</p>
+			<textarea v-model="content"></textarea>
+			<p>{{content}}</p>
+			
+			<p style="color: red;">3.select</p>
+			<select v-model="sel">
+				<option value="red">红色</option>
+				<option value="green">绿色</option>
+				<option value="yellow">黄色</option>
+			</select>
+			<p :style="{color:sel}">{{sel}}</p> 
+			
+		</div>
+		
+		
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#demo',
+				data: {
+					name: '青岛',
+					content: '',
+					sel: 'green',
+					num: 66
+				}
+			})
+		</script>
+	</body>
+</html>

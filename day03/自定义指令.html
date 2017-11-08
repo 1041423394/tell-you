@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = 'demo'>
+			<p v-color = "'red'">{{name}}</p>
+			<p v-color = "'blue'">123</p>
+		</div>
+		
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			Vue.directive('color', function(el, binding){
+				console.log(el);
+				console.log(binding)
+				el.style.color = binding.value;
+			})
+			new Vue({
+				el: '#demo',
+				data:{
+					name: 'qd'
+				}
+			})
+		</script>
+	</body>
+</html>

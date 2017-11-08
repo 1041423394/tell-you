@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/weui.css" />
+	</head>
+
+	<body>
+		<div id="demo">
+
+			<div class="weui-tabbar">
+				<a href="javascript:;" v-for="a in arr" class="weui-tabbar__item " @click = "toggleTabbar(a.id)" :class = "{'weui-bar__item_on' :id == a.id}">
+					<span style="display: inline-block;position: relative;">
+                        <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                        <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;" v-show="a.bool">{{a.num}}</span>
+					</span>
+					<p class="weui-tabbar__label">{{a.title}}</p>
+				</a>
+			</div>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#demo',
+				data: {
+					arr: [{
+							id: 1,
+							bool: true,
+							title: '微信',
+							num: 1
+						},
+						{
+							id: 2,
+							bool: false,
+							title: '通讯录',
+							num: 1
+						},
+						{
+							id: 3,
+							bool: false,
+							title: '发现',
+							num: 1
+						},
+						{
+							id: 4,
+							bool: false,
+							title: '我',
+							num: 1
+						}
+					],
+					id:1
+				},
+				methods: {
+					toggleTabbar: function(id) {
+						this.id = id
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

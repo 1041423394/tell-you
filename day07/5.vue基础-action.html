@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="demo"></div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/vuex.js"></script>
+		<script type="text/javascript">
+			
+			var store = new Vuex.Store({
+				state: {
+					bool: true,
+					title: 'hello',
+					ajax: function(){
+						console.log("ajax")
+					}
+				},
+				getters: {
+					getBool: function(state){
+						return state.bool
+					},
+					getTitle: function(state){
+						return state.title
+					}
+				},
+				mutations:{
+					setBool: function(state, data){
+						state.bool = data;
+					},
+					setTitle: function(state, data){
+						state.title = data;
+					}
+				},
+				actions:{
+					changeBoolAndTitle: function(context, data){
+						context.commit("setBool", false);
+						context.commit("setTitle", "hello world")
+					}
+				}
+			});
+			
+			var xheader = {
+				template:`
+					<div>组件</div>
+				`,
+				data: function(){
+					return {
+						name: 'gz',
+						bool: ''
+					}
+				}
+			}
+			
+			new Vue({
+				el: '#demo',
+				store,
+				data: {
+					name: 'qd',
+					bool:''
+				},
+				template: `
+					<div>
+						<p>{{name}}</p>
+						<xheader></xheader>
+					</div>
+				`,
+				mounted: function(){
+					this.$store.dispatch("changeBoolAndTitle")
+				},
+				components: {
+					xheader
+				},
+				
+			})
+			
+		</script>
+		
+	</body>
+</html>

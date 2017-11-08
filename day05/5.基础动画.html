@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			p{
+				font-size: 30px;
+			}
+			.fade-enter-active,
+			.fade-leave-active{
+				transition: all 0.5s;
+			}
+			.fade-enter,
+			.fade-leave-to{
+				font-size: 0px;
+				opacity: 0;
+			}
+			.fade-enter-to,
+			.fade-leave{
+				opacity: 1;
+				font-size: 30;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="demo">
+			<p style="color: red;">
+					v-show 动画
+			</p>
+			<transition name="fade">
+				<p v-show="bool">
+					v-show 动画
+				</p>
+			</transition>
+			<p  style="color: red;">
+					v-if 动画
+			</p>
+			<transition name="fade">
+				<p v-if="bool">
+					v-if 动画
+				</p>
+			</transition>
+			<input type="button" value="动画" @click = "changebool" />
+		</div>
+		<script src="../js/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#demo',
+				data: {
+					bool: true
+				},
+				methods: {
+					changebool: function(){
+						this.bool = !this.bool
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

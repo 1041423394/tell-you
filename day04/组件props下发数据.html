@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			
+			Vue.component("xHeader", {
+				template:`
+					<div style="border: 1px solid red">
+						<p>{{name}}</p>
+					</div>
+				`,
+				data: function(){
+					return {
+						name: '头部组件'
+					}
+					
+				}
+			});
+			
+			new Vue({
+				el: '#demo',
+				data: {
+					name: 'qd'
+				},
+				template:`
+					<div style="border:1px solid black">
+						<p>{{name}}</p>
+						<x-container :getname="name"></x-container>
+					</div>
+				`,
+				components:{
+					xContainer:{
+						props: ["getname"],
+						template:`
+								<div style="border:1px solid blue">
+									<x-header></x-header>
+									<p>内容区域组件</p>
+									<p>父组件的name值:{{getname}}</p>
+								</div>
+						`,
+						mounted: function(){
+							this.$parent.name = 'gz',
+							this.$children[0].name = '头部区域组件123'
+						}
+						
+					}
+				}
+			})
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/vuex.js"></script>
+		
+		<script type="text/javascript">
+			
+			var store = new Vuex.Store({
+				state: {
+					bool: false,
+					title: 'hello',
+					ajax: function(){
+						console.log("ajax")
+					}
+				}
+			})
+			
+			var xheader = {
+				template: `
+					<header>Vuex基础-state</header>
+				`,
+				data: function(){
+					return {
+						name: 'gz',
+						bool: ''
+					}
+				},
+				mounted: function(){
+					this.bool = this.$store.state.bool;
+					this.$store.state.ajax();
+				}
+			}
+			
+			new Vue({
+				el:'#demo',
+				data: {
+					name: 'qd',
+					bool: ''
+				},
+				template:`
+					<div>
+						<p>{{name}}</p>
+						<xheader></xheader>
+					</div>
+				`,
+				mounted: function(){
+					console.log(this.$store.state.bool);
+					this.bool = this.$store.state.bool;
+				},
+				components: {
+					xheader:xheader
+				},
+				store:store
+			})
+			
+		</script>
+	</body>
+</html>

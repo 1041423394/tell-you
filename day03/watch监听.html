@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+			<input v-model="name"  />
+			<button :disabled="bool">点击</button>
+			<p>{{name}}</p>
+		</div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:'#demo',
+				data:{
+					name: 'qd',
+					bool: true
+				},
+				/*computed:{
+					computedName: function(){
+						if(this.name.length>=6){
+							this.bool = false;
+						}else{
+							this.bool = true
+						}
+						return this.name
+					}
+				},*/
+				watch:{
+					name:function(value, oldValue){
+						if(value.length >= 6){
+							this.bool = false;
+						}else{
+							this.bool = true
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

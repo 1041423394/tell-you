@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id='demo'>
+			<ul>
+				<li v-for="a in arr">{{a}}</li>
+			</ul>
+			<button @click="loadMore">加载更多</button>
+		</div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#demo',
+				data: {
+					name: 'qd',
+					arr: ['a', 'b', 'c', 'd', 'e', 'f']
+				},
+				methods:{
+					loadMore: function(){
+						var self = this;
+						$.ajax({
+							type: 'get',
+							url: 'http://localhost/Vue/day03/data.php',
+							success: function(data){
+								var data = JSON.parse(data);
+								self.arr = self.arr.concat(data.arr);
+							}
+						})
+					}
+				}
+			})
+			
+			
+				        
+
+		</script>
+	</body>
+</html>

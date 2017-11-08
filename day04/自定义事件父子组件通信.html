@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="demo"></div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			
+			var bus = new Vue();
+			Vue.component("xchild", {
+				data: function(){
+					return {
+						name: 'gz'
+					}
+				},
+				template:`
+					<div style="border:1px solid black">
+						<input v-model="name" />
+						<p>{{name}}</p>
+					</div>
+				`,
+				
+				watch:{
+					name: function(){
+						bus.$emit("to-father",this.name)
+					}
+				},
+				mounted:function(){
+					var self = this;
+					bus.$on("to-child", function(data){
+						self.name = data;
+						console.log('子组件接收父组件的name：', data)
+					})
+				}
+			})
+			
+			new Vue({
+				el: '#demo',
+				data:{
+					name: 'qd'
+				},
+				template:`
+					<div style="border:1px solid red">
+						<input v-model="name" />
+						<p>{{name}}</p>
+						<xchild></xchild>
+					</div>
+					
+				`,
+				mounted: function(){
+					var self = this;
+					bus.$on("to-father", function(data){
+						console.log(1)
+						self.name = data;
+						console.log('父组件接收子组件的name:', data)
+					})
+				},
+				watch:{
+					name:function(){
+						bus.$emit("to-child", this.name)
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

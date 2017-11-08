@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="weui.css"/>
+		<link rel="stylesheet" type="text/css" href="base.css"/>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script src="../js/jquery.js"></script>
+		<script type="text/javascript" src="components/xheader.js"></script>
+		<script type="text/javascript" src="components/xsearch.js"></script>
+		<script type="text/javascript" src="components/xlist.js"></script>
+		<script type="text/javascript" src="components/xGallery.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#demo',
+				template:`
+					<div>
+						<x-header></x-header>
+						<x-search></x-search>
+						<x-list></x-list>
+						<x-gallery></x-gallery>
+					</div>
+					
+				`
+			})
+		</script>
+	</body>
+</html>

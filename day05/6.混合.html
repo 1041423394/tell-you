@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="demo"></div>
+		<script src="../js/vue.js"></script>
+		<script type="text/javascript">
+			
+//			Vue.mixin();
+			var publicdata = {
+				data: function(){
+					return {
+						text: "hello"
+					}
+					
+				},
+				methods: {
+					ok: function(){
+						console.log(123)
+					}
+				}
+			};
+			Vue.component("xheader", {
+				template:`
+					<div>
+						<div>头部{{text}}</div>
+						<button @click = "ok">ok</button>
+						<button @click = "ko">ko</button>
+					</div>
+					
+				`,
+				methods:{
+					ko: function(){
+						console.log(321)
+					}
+				},
+				mixins:[publicdata]
+			});
+			Vue.component("xfooter",{
+				template:`
+					<footer>底部{{text}}</footer>
+				`,
+				mixins: [publicdata]
+			});
+			new Vue({
+				el: '#demo',
+				template:`
+					<div>
+						<xheader></xheader>
+						<xfooter></xfooter>
+					</div>
+				`
+			})
+			
+		</script>
+	</body>
+</html>

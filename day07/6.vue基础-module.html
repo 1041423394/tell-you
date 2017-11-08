@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/vuex.js"></script>
+		<script type="text/javascript">
+			
+			var store = new Vuex.Store({
+				modules: {
+					a: {
+						state:{
+							bool: true,
+							title: 'hello'
+						}
+					},
+					b: {
+						state: {
+							bool: false,
+							title: 'hi'
+						}
+					}
+				},
+			
+			});
+			
+			var xheader = {
+				template: `
+					<div>组件</div>
+				`,
+				data: function(){
+					return {
+						name: 'gz',
+						bool: ''
+					}
+				}
+			};
+			
+			new Vue({
+				el: '#demo',
+				data: {
+					name: 'qd',
+					bool: ''
+				},
+				template:`
+					<div>
+						<p>{{name}}</p>
+						<xheader></xheader>
+					</div>
+				`,
+				components:{
+					xheader
+				},
+				mounted: function(){
+					console.log(this.$store.state.a);
+					console.log(this.$store.state.b)
+				},
+				store
+				
+			})
+			
+		</script>
+	</body>
+</html>

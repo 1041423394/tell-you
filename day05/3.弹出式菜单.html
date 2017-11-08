@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/weui.css" />
+	</head>
+
+	<body>
+		<div id="demo">
+			<a href="javascript:;" @click="showActionsheet" class="weui-btn weui-btn_primary">页面主操作 Normal</a>
+			<div class="weui-actionsheet " id="iosActionsheet" :class = "{'weui-actionsheet_toggle' :bool}">
+				<div class="weui-actionsheet__title">
+					<p class="weui-actionsheet__title-text">这是一个标题，可以为一行或者两行。</p>
+				</div>
+				<div class="weui-actionsheet__menu">
+					<div class="weui-actionsheet__cell">示例菜单</div>
+					<div class="weui-actionsheet__cell">示例菜单</div>
+					<div class="weui-actionsheet__cell">示例菜单</div>
+					<div class="weui-actionsheet__cell">示例菜单</div>
+				</div>
+				<div class="weui-actionsheet__action">
+					<div class="weui-actionsheet__cell" id="iosActionsheetCancel">取消</div>
+				</div>
+			</div>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script type="text/javascript">
+			
+			new Vue({
+				el: '#demo',
+				data:{
+					bool: false
+				},
+				methods:{
+					showActionsheet: function(){
+						this.bool = !this.bool
+					}
+				}
+			})
+			
+		</script>
+	</body>
+
+</html>

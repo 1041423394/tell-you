@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "demo">
+			<p style="color: red;">1.字符串</p>
+			<p>{{html}}</p>
+			<p style="color: red;">2.数组</p>
+			<p>{{arr[0]}}</p>
+			<p>{{arr[1]}}</p>
+			<p style="color: red;">3.对象</p>
+			<p>{{obj.name}}</p>
+			<p>{{obj.skill}}</p>
+			<p style="color: red;">4.布尔值</p>
+			<p>{{bool}}</p>
+			
+			<p>{{!bool?'真的':'假的'}}</p>
+			<p style="color: red;">5.数字</p>
+			<p>{{num+1}}</p>
+		</div>
+		
+		
+		
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#demo',
+				data: {
+					html: 'hello world',
+					arr: ['js', 'php'],
+					obj:{
+						name: '青岛',
+						skill: 'js'
+					},
+					bool: true,
+					num: 10
+				}
+			})
+		</script>
+	</body>
+</html>

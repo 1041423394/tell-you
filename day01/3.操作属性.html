@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo">
+			<p :name= 'color'>{{color}}</p>
+			<p :id = 'color'>id</p>
+		</div>
+		
+		
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#demo',
+				data: {
+					name: '青岛',
+					color: 'p'
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id = 'demo'>
+			<p v-color = "'red'">{{name}}</p>
+			<p v-color = "'blue'">123</p>
+			<p v-showw = "bool">hello world</p>
+			
+			<button v-clickk:click="ok">ok</button>
+		</div>
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript">
+			Vue.directive('color', function(el, binding){
+				$(el).css('color', binding.value)
+			})
+			Vue.directive('showw', function(el, binding){
+				if(binding.value){
+					$(el).css("display", 'block')
+				}else{
+					$(el).css("display", 'none')
+				}
+			})
+			Vue.directive("clickk", function(el, binding){
+				el.addEventListener(binding.arg, binding.value);
+			})
+			new Vue({
+				el: '#demo',
+				data:{
+					name: 'qd',
+					bool: true
+				},
+				methods:{
+					ok: function(){
+						console.log("ok")
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

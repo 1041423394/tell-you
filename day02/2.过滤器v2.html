@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "demo">
+			<p>{{num|gqs}}</p>
+			<p>{{see}}ing</p>
+		</div>
+		
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript">
+			Vue.filter("gqs", function(value){
+				console.log(value);
+				var newValue = '$' + value;
+				return newValue;
+			})
+			
+			new Vue({
+				el: '#demo',
+				data:{
+					num: 1000,
+					see: 'see'
+				}
+			})
+		</script>
+	</body>
+</html>

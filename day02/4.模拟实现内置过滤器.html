@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = "demo">
+			<p style="color: red;">1.模拟filterBy</p>
+			<input v-model="search"  />
+			<ul>
+				<li v-for="a in computedarr">{{a.id}} {{a.name}}</li>
+			</ul>
+			
+			<p style="color: red;">2.模拟limitBy</p>
+			<p>{{computedtext}}</p>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#demo',
+				data:{
+					search: '',
+					arr: [{
+						name: "广州",
+						id: 5
+					}, {
+						name: "青岛",
+						id: 4
+					}, {
+						name: "深圳",
+						id: 7
+					}, {
+						name: "北京",
+						id: 1
+					}],
+					text:"abcdefghijk"
+				},
+				computed:{
+					computedarr: function(){
+						var self = this;
+						var newArr = this.arr.filter(function(value){
+							return value.name.indexOf(self.search) != -1;
+						})
+						return newArr;
+					},
+					computedtext: function(){
+						return this.text.slice(3, 8);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

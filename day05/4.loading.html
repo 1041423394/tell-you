@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/weui.css"/>
+		<link rel="stylesheet" type="text/css" href="../day04/base.css"/>
+	</head>
+	<body>
+		<div id="demo">
+			
+		</div>
+		<script src="../js/vue.js"></script>
+		<script src="../js/zepto.js"></script>
+		<script type="text/javascript">
+			var bus = new Vue();
+		</script>
+		<script src="components/xheader.js"></script>
+		<script src="components/xlist.js"></script>
+		<script src="components/xload.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#demo',
+				template:`
+					<div>
+						<xheader></xheader>
+						<xlist></xlist>
+						<xload></xload>
+					</div>
+				`
+			})
+		</script>
+	</body>
+</html>
